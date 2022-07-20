@@ -8,13 +8,25 @@ function App() {
     alert(studentID);
   }
   return (
-    <div className="eventForm">
-      <button className="hideEventForm"></button>
-      <input className="eventID"></input>
-      <button className="createEvent"></button>
-      <select className="selectEvent"></select>
-      <input className="studentID" onChange={(evt) => setStudentID(evt.target.value)}></input>
-      <button className="sendID" type="button" onClick={(() => sendCheckIn())}></button>
+    <div className="form">
+      <button className="hideEventForm">Hide Event Form</button>
+      <h1>CU Event Scanner Management</h1>
+      <div className="formChunk">
+        <h2>Event Form</h2>
+        <label>New Event ID</label>
+        <input className="eventID" type="text"></input>
+        <button className="createEvent">Create Event</button>
+        <label>Current Active Event</label>
+        <select className="selectEvent">
+          <option>Select an event</option>
+        </select>
+      </div>
+      <div className="formChunk">
+        <h2>Student Form</h2>
+        <label>Student ID</label>
+        <input className="studentID" type="text" onChange={(evt) => setStudentID(evt.target.value)}></input>
+        <button className="sendID" type="button" onClick={(() => sendCheckIn())}>Send ID</button>
+      </div>
     </div>
   )
 }
