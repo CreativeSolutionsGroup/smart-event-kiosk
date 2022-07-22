@@ -40,6 +40,7 @@ function App() {
       event: activeEvent,
     };
 
+    setStudentID("");
     await axios.post("/checkin", checkin);
   }
 
@@ -57,7 +58,12 @@ function App() {
         Toggle Event Form
       </Button>
       <h1>CU Event Scanner Kiosk</h1>
-      <h1>Currently Active: {activeEvent ? allEvents?.find(e => e.id === activeEvent)?.alias : "No Active Event"}</h1>
+      <h1>
+        Currently Active:{" "}
+        {activeEvent
+          ? allEvents?.find((e) => e.id === activeEvent)?.alias
+          : "No Active Event"}
+      </h1>
       {showEventForm ? (
         <EventForm
           events={allEvents!}
@@ -72,6 +78,7 @@ function App() {
           <h2>Student Form</h2>
           <label>Student ID</label>
           <TextField
+            value={studentID}
             className="studentID"
             type="text"
             onChange={(evt) => setStudentID(evt.target.value)}
